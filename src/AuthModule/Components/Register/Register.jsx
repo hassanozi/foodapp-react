@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import registerUser from '../../../API/axiosClients';
 
 export default function Register() {
 
@@ -13,7 +14,7 @@ export default function Register() {
 
     const onFormSubmit = async (data) => {
         try {
-            let response = await axios.post('https://upskilling-egypt.com:3006/api/v1/Users/Register',data);
+             const response = await registerUser(data);
             console.log(response);
             toast.success('Login Successful',{theme:'colored'});
 

@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import { login } from '../../../API/Auth';
 
 export default function Login() {
 
@@ -12,10 +13,11 @@ export default function Login() {
 
     const onFormSubmit = async (data) => {
         try {
-            let response = await axios.post('https://upskilling-egypt.com:3006/api/v1/Users/Login',data);
+            const response = await login(data);
+            localStorage.setItem('token',response.data.user);
             console.log(response);
-            toast.success('Login Successful',{theme:'colored'});
             localStorage.setItem('userToken',response.data.token);
+            toast.success('Login Successful',{theme:'colored'});
             navigate('/dashboard');
         } catch (error) {
             console.log(error);

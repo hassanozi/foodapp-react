@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { forgetPass } from '../../../API/Auth';
 
 export default function ForgetPass() {
 
@@ -11,7 +12,7 @@ export default function ForgetPass() {
 
   const onFormSubmit = async (data) => {
       try {
-            let response = await axios.post('https://upskilling-egypt.com:3006/api/v1/Users/Reset/Request',data);
+            const response = await forgetPass(data);
             console.log(response);
             toast.success('Email sent successfully. Please check your inbox.',{theme:'colored'});
             navigate('/reset-pass');
@@ -43,7 +44,7 @@ export default function ForgetPass() {
             </div>
             
             <button className='btn btn-success w-100'>Submit</button>
-            
+
         </form>
     </>
   )
