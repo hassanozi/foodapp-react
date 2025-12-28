@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
-import { login } from '../../../API/Auth';
+import { login } from '../../../API/auth.js';
 import { AuthContext } from '../../../Context/AuthContext';
 import styles from './Login.module.css'
 
