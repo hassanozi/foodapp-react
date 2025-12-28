@@ -1,12 +1,15 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { login } from '../../../API/Auth';
+import { AuthContext } from '../../../Context/AuthContext';
+import styles from './Login.module.css'
 
 export default function Login() {
 
+    let { saveLoginData } = useContext(AuthContext);
     let {register,handleSubmit,formState:{errors}} = useForm();
     let navigate = useNavigate();
 
@@ -14,9 +17,9 @@ export default function Login() {
     const onFormSubmit = async (data) => {
         try {
             const response = await login(data);
-            localStorage.setItem('token',response.data.user);
+            localStorage.setItem('token',response.data.token);
             console.log(response);
-            localStorage.setItem('userToken',response.data.token);
+            saveLoginData();
             toast.success('Login Successful',{theme:'colored'});
             navigate('/dashboard');
         } catch (error) {
@@ -31,16 +34,28 @@ export default function Login() {
         <p>Welcome Back! Please enter your details</p>
 
         <form onSubmit={handleSubmit(onFormSubmit)}>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i className='fa fa-envelope'></i></span>
-                <input type="text" {...register('email',
-                {required:'Email is required', pattern:{value:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message:'Invalid email address'}})} 
-                className="form-control" placeholder="Email" aria-label="email" aria-describedby="basic-addon1"/>
+           <div className="input-group mb-3">
+            <span className={`input-group-text ${styles.iconSeparator}`}>
+            <i className="fa fa-mobile"></i>
+            </span>
+            <input
+                type="text"
+                {...register('email', {
+                required: 'Email is required',
+                pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Invalid email address',
+                },
+                })}
+                className="form-control"
+                placeholder="Email"
+            />
             </div>
+
             {errors.email && <p className='alert alert-danger p-2'>{errors.email.message}</p>}
 
             <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1"><i className='fa fa-key'></i></span>
+                <span  className={`input-group-text ${styles.iconSeparator}`} id="basic-addon1"><i className="fa fa-lock"></i></span>
                 <input type="password" {...register('password', {required:'Password is required'})} 
                 className="form-control" placeholder="Password" aria-label="paswword" aria-describedby="basic-addon1"/>
             </div>

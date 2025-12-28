@@ -16,6 +16,8 @@ import CategoriesList from './CategoriesModule/Components/CategoriesList/Categor
 import CategoryData from './CategoriesModule/Components/CategoryData/CategoryData'
 import UsersList from './UsersModule/Components/UsersList/UsersList'
 import { ToastContainer } from 'react-toastify'
+import ProtectedRoute from './Shared/Components/ProtectedRoute/ProtectedRoute'
+import FavList from './Favorites/Components/FavList/FavList'
 
 function App() {
   
@@ -32,14 +34,16 @@ function App() {
     },
     {
         path:'dashboard',
-        element:<MasterLayout/>, errorElement:<NotFound/>,
+        element: <ProtectedRoute><MasterLayout/></ProtectedRoute> , errorElement:<NotFound/>,
         children:[
           {index:true, element: <Dashboard/>},
           {path:'recipes', element: <RecipesList/>},
           {path:'recipe-data', element: <RecipeData/>},
+          {path:'recipe-data/edit/:id', element: <RecipeData/>},
           {path:'categories', element: <CategoriesList/>},
           {path:'category-data', element: <CategoryData/>},
           {path:'users', element: <UsersList/>},
+          {path:'favs', element: <FavList/>},
         ]
     }
   ])

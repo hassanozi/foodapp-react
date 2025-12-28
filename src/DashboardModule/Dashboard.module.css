@@ -1,9 +1,9 @@
 .dashboardHero {
-  background-image: url('../src/assets/images/background.png');
+  background-image: url('../assets/images/background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow-x: hidden;
+
   min-height: 300px;
   display: flex;
   align-items: center;

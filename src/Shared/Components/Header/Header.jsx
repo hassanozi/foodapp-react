@@ -1,24 +1,28 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../Context/AuthContext";
 
-export default function Header({title,description,imgUrl}) {
+export default function Header({title,description,imgUrl, className}) {
+
+
   return (
-    <header className='bg-success'>
-      <div className='container-fluid'>
-        <div className='row'>
-          <div className='col-md-8 text-white'>
-            <div className='d-flex flex-column justify-content-center p-2'>
-              <h4>{title}</h4>
-              <p>{description}</p>
-            </div>
+    <header style={{ width: "95%" }}>
+      <div className="container-fluid">
+        <div className="row align-items-center">
+
+        
+          <div className="col-md-8 text-white">
+            <h4 className="mb-2">{title}</h4>
+            <p className="mb-0">{description}</p>
           </div>
 
-          <div className='col-md-4'>
-            <div className='h-100 text-end'>
-              <img className='img-fluid w-50' src={imgUrl} />
-            </div>
+          
+          <div className="col-md-4 d-flex justify-content-end">
+            <img className="img-fluid" src={imgUrl}  />
           </div>
 
         </div>
       </div>
     </header>
+
   )
 }

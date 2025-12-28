@@ -1,0 +1,31 @@
+.iconSeparator {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding-right: 12px;
+}
+
+.iconSeparator::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;        /* ✅ FIXED HEIGHT */
+  width: 1px;
+  background-color: #ccc;
+}
+
+.input-group-text {
+  border-right: 0 !important;
+  background-color: transparent;
+}
+
+.input-group .form-control {
+  border-left: 0 !important;
+}
+.input-group > :not(:first-child) {
+  margin-left: 0 !important;
+}
+
+

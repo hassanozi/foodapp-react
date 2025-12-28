@@ -17,3 +17,11 @@ export const forgetPass = (data) => {
   return axiosClient.post('/Users/Reset/Request', data);
 };
 
+export const AuthUrls = {
+
+    LOGIN : '/Users/Login',
+    REGISTER: '/Users/Register',
+    RESETPASS: '/Users/Reset',
+    FORGETPASS: '/Users/Reset/Request'
+  }
+
