@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { resetPass } from '../../../API/Auth';
+import { resetPass } from '../../../API/auth.js';
 
 export default function ResetPass() {
 
