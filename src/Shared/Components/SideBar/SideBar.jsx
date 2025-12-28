@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
-import logo from '../../../Assets/Images/logo-sidebar.png'
+import logo from '../../../assets/images/logosidebar.png'
 import { AuthContext } from '../../../Context/AuthContext';
 
 export default function SideBar() {
